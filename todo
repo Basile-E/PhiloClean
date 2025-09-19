@@ -1,0 +1,14 @@
+separer en plusieurs fichiers OK 
+protection de l'affichage des log
+    if sim stoped domt print 
+faire le parsing des params OK
+limit le nombre de philo a 200 OK
+edge cases :
+    1 philo et 0 philo OK 
+
+changer l'index des philos 
+ajouter le msg qui dit que le philo prend une fourchette OK
+regler les problemes valgrind
+
+Cleanup :
+    faire un main clean qui fait des appels a des fonctions qui lance la simulation
