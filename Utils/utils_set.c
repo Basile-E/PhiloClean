@@ -34,7 +34,12 @@ void    set_philo(t_mega *mega, int index)
     mega->philos[index].last_meal = get_time();
     mega->philos[index].is_dead = 0;
     mega->philos[index].nb_to_eat = mega->args->nb_of_time_to_eat;
-    if (index == mega->args->nb_of_philo - 1)
+    if (mega->args->nb_of_philo == 1)
+    {
+        mega->philos[index].right_fork = &mega->mutex[index];
+        mega->philos[index].left_fork = NULL;
+    }
+    else if (index == mega->args->nb_of_philo - 1)
     {
         mega->philos[index].right_fork = &mega->mutex[index];
         mega->philos[index].left_fork = &mega->mutex[0];

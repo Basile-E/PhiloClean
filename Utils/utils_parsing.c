@@ -48,7 +48,7 @@ int check_arg(int ac, char **av)
         return(printf("Error\nUsage : ./philo number_of_philosophers\
  time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"), 1);
     
-    if (ft_atol(av[1]) > 200 || ft_atol(av[1]) == 1 || ft_atol(av[1]) == 0 || ft_atol(av[1]) < 1)
+    if (ft_atol(av[1]) > 200 || ft_atol(av[1]) == 0 || ft_atol(av[1]) < 1)
         return(1);
     while (i < ac)
     {

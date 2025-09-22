@@ -59,13 +59,20 @@ int     try_to_eat(t_philo *philo)
     long ptime;
     ptime = time - philo->start_time;
     
-    pthread_mutex_lock(philo->right_fork);
-    printf("%ld %i has taken a fork\n", ptime, philo->index);
-    pthread_mutex_lock(philo->left_fork);
-    printf("%ld %i has taken a fork\n", ptime, philo->index);
-    eat(philo);
+    if (philo->right_fork)
+    {
+        pthread_mutex_lock(philo->right_fork);
+        printf("%ld %i has taken a fork\n", ptime, philo->index);
+    }    
+    if (philo->left_fork)
+    {
+        pthread_mutex_lock(philo->left_fork);
+        printf("%ld %i has taken a fork\n", ptime, philo->index);
+        eat(philo);
+    }
     pthread_mutex_unlock(philo->right_fork);
-    pthread_mutex_unlock(philo->left_fork);
+    if (philo->left_fork)
+        pthread_mutex_unlock(philo->left_fork);
     return(1);
 }
 

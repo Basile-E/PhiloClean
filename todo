@@ -24,6 +24,7 @@ faire l'inversion des fourchette si philo pair ou impaire mais je comprend pas b
 questions : 
 dans le parsing, est-ce qu'un philo peut avoir 0 dans un de ses params ? 
 est-ce que les philo DOIVENT penser ?
+je check avant de manger si j'ai bien deux fourchettes, est-ce que j'ai le droit ?
 
 Cleanup :
     faire un main clean qui fait des appels a des fonctions qui lance la simulation
