@@ -1,14 +1,67 @@
 separer en plusieurs fichiers OK 
-protection de l'affichage des log
-    if sim stoped domt print 
 faire le parsing des params OK
 limit le nombre de philo a 200 OK
+ajouter le msg qui dit que le philo prend une fourchette OK
+changer l'index des philos OK
+regler le probleme de segfault si j'envoie pas de nb to eat ok 
+fix le fait que un philo peut aller se coucher apres etre mort OK
+et le fait que les philos ne se lance pas si je ne met pas de nombre de repas OK
 edge cases :
     1 philo et 0 philo OK 
 
-changer l'index des philos 
-ajouter le msg qui dit que le philo prend une fourchette OK
+
+Still to-do :
+protection de l'affichage des log
+    if sim stoped dont print 
+    (je peux me faire une fonction print avec un param index, un param temps, et un param control avec 1, 2, 3, 4 def comme eat,think,sleep,grab
+    et cette fonction sera protec avec des mutex et des if)
 regler les problemes valgrind
+faire une fonction qui kill tout les processus rapidement
+(une boucle dans le main qui check tout le temps si un philo est mort)
+faire l'inversion des fourchette si philo pair ou impaire mais je comprend pas bien pk ?
+
+
+questions : 
+dans le parsing, est-ce qu'un philo peut avoir 0 dans un de ses params ? 
+est-ce que les philo DOIVENT penser ?
 
 Cleanup :
     faire un main clean qui fait des appels a des fonctions qui lance la simulation
+
+
+test failed :
+
+Test: [1 800 200 200] | a philo should die
+
+Press ENTER to start test, press any other key to exit tester...
+(no philo seem to have run)
+
+
+Test: [4 200 205 200] | a philo should die
+
+Press ENTER to start test, press any other key to exit tester...
+
+0 1 is thinking
+0 1 has taken a fork
+0 2 is thinking
+0 4 is thinking
+0 4 has taken a fork
+0 4 has taken a fork
+0 4 is eating
+0 1 has taken a fork
+0 1 is eating
+0 3 is thinking
+0 3 has taken a fork
+0 3 has taken a fork
+0 3 is eating
+201 4 died
+201 4 is sleeping
+201 3 died
+201 3 is sleeping
+201 1 died
+201 1 is sleeping
+0 2 has taken a fork
+0 2 has taken a fork
+201 2 is eating
+201 2 is sleeping
+(le log est étrange, il y a des race pour ecrire, devrait etre fix par la fonction print)

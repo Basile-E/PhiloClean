@@ -33,6 +33,7 @@ void    eat(t_philo *philo)
 
     printf("%ld %i is eating\n", ptime, philo->index);
     my_sleep(philo->args->time_to_eat, philo);
+    philo->nb_of_meals++;
     philo->last_meal = get_time();
 }
 
@@ -78,6 +79,12 @@ int     is_dead(t_philo *philo)
         die(philo);
         return(1);
     }
+    if (philo->nb_to_eat != 0 && philo->nb_of_meals >= philo->nb_to_eat)
+    {
+        die(philo);
+        return(1);    
+    }
     else
         return(0);
 }
+

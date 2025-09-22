@@ -43,16 +43,18 @@ int check_arg(int ac, char **av)
 {
     int     i;
 
-    i = 2;
+    i = 2; // i est set a 2 parce-que je check av[1] au dessus
     if (ac < 5 || ac > 6)
-        return(printf("Error\nUsage : ./philo number_of_philosophers \
-                time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"), 1);
+        return(printf("Error\nUsage : ./philo number_of_philosophers\
+ time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"), 1);
     
-    if (ft_atol(av[1]) > 200 || ft_atol(av[1]) == 1 || ft_atol(av[1]) == 0)
+    if (ft_atol(av[1]) > 200 || ft_atol(av[1]) == 1 || ft_atol(av[1]) == 0 || ft_atol(av[1]) < 1)
         return(1);
     while (i < ac)
     {
         if (ft_atol(av[i]) > __INT_MAX__)
+            return (1);
+        if (ft_atol(av[i]) < 1)
             return (1);
         i++;
     }

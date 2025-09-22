@@ -31,24 +31,46 @@ int main(int ac, char **av)
     set_args(mega->args, av);
     set_mega(mega);
     //set_philo(mega->philos, mega->args);
-    print_debug_mega(mega);
+    //print_debug_mega(mega);
 
     /*set toutes les donnés, sera une fonction set_all qui prend mega et av en params*/
 
-    i = 0;
-    while(i < mega->args->nb_of_philo)
+    i = 1;
+    while(i <= mega->args->nb_of_philo)
     {
         pthread_create(&mega->philos[i].tid, NULL, be_philo, &mega->philos[i]);
         i++;
     }
 
-    i = 0;
-    while (i < mega->args->nb_of_philo)
+    /*
+        ici la fonction KILL_ALL
+        elle devrait check si il y un des philos qui est dead
+        pourra etre une fonction qui prend mega comme arg et qui loop jusqua trouver une condition d'arret puis renverra 1
+        (trop manger ou dead) (au final elle est dans utils philo et c'est is dead)
+    */
+    i = 1;
+    while(42)
     {
-        pthread_join(mega->philos[i].tid, NULL);
-        i++;
+        if (mega->simulation_active == 0)
+        {
+            i = 1;
+            while (i <= mega->args->nb_of_philo)
+            {
+                pthread_join(mega->philos[i].tid, NULL);
+                i++;
+            }
+            return(0);
+        }    
     }
 
-    //usleep(1000); //sert a attendre la fin du programme pour remplacer les joins (le premier thread fini trop vite donc le programme se ferme)
 
+    /*End Sim loop*/
+    // i = 1;
+    // while (i <= mega->args->nb_of_philo)
+    // {
+    //     pthread_join(mega->philos[i].tid, NULL);
+    //     i++;
+    // }
+    //usleep(1000); //sert a attendre la fin du programme pour remplacer les joins (le premier thread fini trop vite donc le programme se ferme)
+    return(0);
 }

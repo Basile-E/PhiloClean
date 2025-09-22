@@ -23,9 +23,12 @@ void    *be_philo(void *data)
     // printf("\nje pense a l'index %i\ndonc je suis %ld\n", philo->index, philo->tid);
     while(philo->mega->simulation_active)
     {
-        think(philo);
-        try_to_eat(philo);
-        go_sleep(philo);
+        if (philo->mega->simulation_active) // c'est pas propre mais ca empeche les philo d'aller pioncer apres leurs mort
+            think(philo);
+        if (philo->mega->simulation_active)
+            try_to_eat(philo);
+        if (philo->mega->simulation_active)
+            go_sleep(philo);
         // now = get_time();
         // philo->time_lived = now - philo->start_time;
     }

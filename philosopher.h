@@ -16,7 +16,11 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-
+#define EAT_LOG 1
+#define SLEEP_LOG 2
+#define TAKE_LOG 3
+#define THINK_LOG 4
+#define DIE_LOG 5
 
 /*Struct*/
 typedef struct s_mega t_mega;
@@ -39,6 +43,9 @@ typedef struct  s_philo
     long        start_time;
     long        time_lived;
     long        last_meal;
+    int         is_dead;
+    int         nb_to_eat;
+    int         nb_of_meals;
     t_args      *args;
     t_mega      *mega;
     pthread_mutex_t     *left_fork;
